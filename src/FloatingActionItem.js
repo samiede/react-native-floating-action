@@ -52,8 +52,15 @@ class FloatingActionItem extends Component {
       textStyle,
       textProps,
       textContainerStyle,
-      shadow
+      shadow,
+      subtitle,
+      subtitleStyle,
+      subtitleColor
     } = this.props;
+
+    if (subtitle) {
+      textContainerStyle.height = 44
+    }
 
     if (elevation !== undefined) {
       console.warn(
@@ -91,6 +98,18 @@ class FloatingActionItem extends Component {
           >
             {text}
           </Text>
+          {subtitle && <Text
+            style={[
+              styles.subtitle,
+              {
+                color: subtitleColor
+              },
+              subtitleStyle
+            ]}
+            {...textProps}
+          >
+            {subtitle}
+          </Text> }
         </View>
       );
     }
@@ -214,7 +233,10 @@ FloatingActionItem.propTypes = {
   buttonSize: PropTypes.number,
   textContainerStyle: PropTypes.object,
   text: PropTypes.string,
+  subtitle: PropTypes.string,
   textStyle: PropTypes.object,
+  subtitleStyle: PropTypes.object,
+  subtitleColor: PropTypes.string,
   textProps: PropTypes.object,
   textBackground: PropTypes.string,
   textColor: PropTypes.string,
@@ -253,6 +275,7 @@ FloatingActionItem.defaultProps = {
   buttonSize: 40,
   textElevation: 5,
   textColor: "#444444",
+  subtitleColor: "#444444",
   textBackground: "#ffffff",
   margin: 8,
   shadow: {
@@ -294,6 +317,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 14,
+    lineHeight: 20
+  },
+  subtitle: {
+    fontSize: 13,
     lineHeight: 20
   },
   button: {
