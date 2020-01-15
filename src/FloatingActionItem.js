@@ -59,7 +59,7 @@ class FloatingActionItem extends Component {
     } = this.props;
 
     if (subtitle) {
-      textContainerStyle.height = 44
+      styles.textContainer.height = 44
     }
 
     if (elevation !== undefined) {
