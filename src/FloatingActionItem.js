@@ -58,9 +58,9 @@ class FloatingActionItem extends Component {
       subtitleColor
     } = this.props;
 
-    if (subtitle) {
-      styles.textContainer.height = 44
-    }
+    // if (subtitle) {
+    //   styles.textContainer.height = 44;
+    // }
 
     if (elevation !== undefined) {
       console.warn(
@@ -98,7 +98,8 @@ class FloatingActionItem extends Component {
           >
             {text}
           </Text>
-          {subtitle && <Text
+          {subtitle && (
+          <Text
             style={[
               styles.subtitle,
               {
@@ -109,7 +110,8 @@ class FloatingActionItem extends Component {
             {...textProps}
           >
             {subtitle}
-          </Text> }
+          </Text>
+          ) }
         </View>
       );
     }
@@ -129,7 +131,7 @@ class FloatingActionItem extends Component {
     }
 
     const propStyles = {
-      tintColor: tintColor,
+      tintColor,
       backgroundColor: color,
       width: buttonSize,
       height: buttonSize,
@@ -144,7 +146,7 @@ class FloatingActionItem extends Component {
         {React.isValidElement(icon) ? (
           icon
         ) : (
-          <Image style={[iconStyle, {tintColor: tintColor}]} source={icon} />
+          <Image style={[iconStyle, { tintColor }]} source={icon} />
         )}
       </View>
     );
@@ -157,7 +159,8 @@ class FloatingActionItem extends Component {
       render,
       margin,
       name,
-      animated
+      animated,
+      subtitle
     } = this.props;
 
     const Touchable = getTouchableComponent(false);
@@ -305,9 +308,10 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     paddingHorizontal: 8,
+    paddingVertical: 4,
     elevation: 5,
-    borderRadius: 4,
-    height: 22
+    borderRadius: 4
+    // height: 22
   },
   leftTextContainer: {
     marginLeft: 14
